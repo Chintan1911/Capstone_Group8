@@ -1,0 +1,230 @@
+/* General styles for the Home page */
+section {
+  padding: 40px 20px;
+  text-align: center;
+  animation: fadeInUp 1.5s;
+}
+
+/* Welcome message section */
+.welcome-message {
+  background: url('../../assets/background.jpg') no-repeat center center/cover;
+  background: rgba(0, 0, 0, 0.9); /* Darker overlay */
+
+  margin-top: 20px;
+  border-radius: 10px;
+  padding: 30px;
+  color: white;
+  position: relative;
+}
+
+.welcome-message::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8); /* Darker overlay */
+  border-radius: 10px;
+  z-index: -1;
+}
+
+.welcome-message h2 {
+  font-size: 2.5rem;
+  color: #fff;
+}
+
+.welcome-message p {
+  font-size: 1.2rem;
+  color: #ccc;
+}
+
+/* Popular dishes section */
+.popular-dishes {
+  background-color: #fff;
+  margin-top: 20px;
+}
+
+.popular-dishes h2 {
+  font-size: 2.5rem;
+  color: #333;
+}
+
+.popular-dishes .dishes {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.popular-dishes .dish {
+  background: #f4f4f4;
+  padding: 20px;
+  border-radius: 10px;
+  width: 250px;
+  margin: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.popular-dishes .dish:hover {
+  transform: translateY(-10px);
+}
+
+.popular-dishes .dish img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.popular-dishes .dish h3 {
+  margin-top: 10px;
+  font-size: 1.5rem;
+}
+
+/* Why choose us section */
+.why-choose-us {
+  background: url('../../assets/whyChooseUs.jpg') no-repeat center center/cover;
+  margin-top: 20px;
+  border-radius: 10px;
+  padding: 30px;
+  color: white;
+  position: relative;
+}
+
+.why-choose-us::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7); /* Darker overlay */
+  border-radius: 10px;
+  z-index: -1;
+}
+
+.why-choose-us h2 {
+  font-size: 2.5rem;
+  color: #fff;
+}
+
+.why-choose-us ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.why-choose-us ul li {
+  font-size: 1.3rem;
+  color: white;
+  margin: 10px 0;
+}
+
+/* Quick contact section */
+.quick-contact {
+  background-color: #fff;
+  margin-top: 20px;
+  border-radius: 10px;
+  padding: 30px;
+}
+
+.quick-contact h2 {
+  font-size: 2.5rem;
+  color: #333;
+}
+
+.quick-contact form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.quick-contact form input,
+.quick-contact form textarea {
+  width: 80%;
+  max-width: 600px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.quick-contact form button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  font-size: 1.2rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.quick-contact form button:hover {
+  background-color: #0056b3;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .popular-dishes .dishes {
+    flex-direction: column;
+    align-items: center;
+  }
+  .welcome-message h2, .popular-dishes h2, .why-choose-us h2, .quick-contact h2 {
+    font-size: 2rem;
+  }
+  .welcome-message p, .why-choose-us ul li {
+    font-size: 1rem;
+  }
+  .quick-contact form input, .quick-contact form textarea {
+    width: 90%;
+  }
+}
