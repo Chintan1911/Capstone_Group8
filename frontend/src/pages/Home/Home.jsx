@@ -10,7 +10,6 @@ const Home = () => {
   return (
     <>
       <Header />
-      <ExploreMenu setCategory={setCategory} category={category} />
       <section className="welcome-message">
         <h2>Welcome to Food Dash</h2>
         <p>Your favorite meals delivered right to your doorstep. Explore our diverse menu and experience culinary excellence.</p>
