@@ -9,11 +9,13 @@ import ExploreMenu from './components/ExploreMenu/ExploreMenu';
 
 
 const App = () => {
+  const [showLogin,setShowLogin] = useState(false)
   return (
     <>
+         {showLogin?<LoginPopup setShowLogin={setShowLogin}/>:<></>}
     <div className='app'>
-      <Navbar />
-      <Routes>
+    <Navbar setShowLogin={setShowLogin}/>
+    <Routes>
       <Route path='/' element={<Home />} />
       <Route path='/exploremenu' element={<ExploreMenu />} /> {/* Define the route */}
       </Routes>
