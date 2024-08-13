@@ -1,41 +1,51 @@
-<<<<<<< Updated upstream
 import React from 'react'
 import './ExploreMenu.css'
 
 const ExploreMenu = () => {
   return (
-    <div>
-      
-    </div>
-  )
-}
+   
+      <section className="popular-dishes">
+        <h2>Popular Dishes</h2>
+        <div className="dishes">
+          {food_list.map((item, index) => (
+            <div className="dish" key={index}>
+              <img src={item.image} alt={`Dish ${index + 1}`} />
+              <h3>{item.name}</h3>
+              <p>{item.description}</p>
+              <p>Price: ${item.price}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+  );
+};
 
-export default ExploreMenu
-=======
-// src/components/ExploreMenu/ExploreMenu.jsx
-import React, { useContext } from 'react';
-import PropTypes from 'prop-types';
+export default ExploreMenu;
+import React, { useState, useContext } from 'react';
 import './ExploreMenu.css';
 import { StoreContext } from '../../Context/StoreContext';
+import { food_list } from '../../assets/assets'; 
+const ExploreMenu = () => {
+  const { menu_list } = useContext(StoreContext); 
+  const [selectedCategory, setSelectedCategory] = useState('All'); 
 
-const ExploreMenu = ({ category, setCategory }) => {
-  const { menu_list, food_list } = useContext(StoreContext);
+  const handleMenuClick = (category) => {
+    setSelectedCategory(category); 
+  };
 
+  
+  const filteredFood = selectedCategory === 'All' ? food_list : food_list.filter(item => item.category === selectedCategory);
 
   return (
     <div className='explore-menu' id='explore-menu'>
       <h1>Explore our menu</h1>
       <p className='explore-menu-text'>Choose from a diverse menu featuring a delectable array of dishes. Our mission is to satisfy your cravings and elevate your dining experience, one delicious meal at a time.</p>
       <div className="explore-menu-list">
-        <div className={`explore-menu-list-item ${category === 'All' ? 'active' : ''}`} onClick={() => setCategory('All')}>
+        <div className={`explore-menu-list-item ${selectedCategory === 'All' ? 'active' : ''}`} onClick={() => handleMenuClick('All')}>
           <p>All</p>
         </div>
         {menu_list.map((item, index) => (
-          <div
-            key={index}
-            className={`explore-menu-list-item ${category === item.menu_name ? 'active' : ''}`}
-            onClick={() => setCategory(prev => prev === item.menu_name ? 'All' : item.menu_name)}
-          >
+          <div key={index} className={`explore-menu-list-item ${selectedCategory === item.menu_name ? "active" : ""}`} onClick={() => handleMenuClick(item.menu_name)}>
             <img src={item.menu_image} alt={item.menu_name} />
             <p>{item.menu_name}</p>
           </div>
@@ -43,17 +53,24 @@ const ExploreMenu = ({ category, setCategory }) => {
       </div>
       <hr />
       <section className="popular-dishes">
-        <h2>{category !== 'All' ? `Popular ${category} Dishes` : 'Popular Dishes'}</h2>
-       
+        <h2>{selectedCategory !== 'All' ? `Popular ${selectedCategory} Dishes` : 'Popular Dishes'}</h2>
+        <div className="dishes">
+          {filteredFood.map((item, index) => (
+            <div className="dish" key={index}>
+              <img src={item.image} alt={`Dish ${index + 1}`} />
+              <h3>{item.name}</h3>
+              <p>{item.description}</p>
+              <p>Price: ${item.price}</p>
+            </div>
+          ))}
+        </div>
       </section>
     </div>
   );
 };
 
 ExploreMenu.propTypes = {
-  category: PropTypes.string.isRequired,
-  setCategory: PropTypes.func.isRequired,
+  // If needed, define propTypes for context or other props
 };
 
-export default ExploreMenu;
->>>>>>> Stashed changes
+export default ExploreMenu

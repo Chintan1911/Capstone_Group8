@@ -1,14 +1,35 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import './Navbar.css';
+import PropTypes from 'prop-types';
 import { assets } from '../../assets/assets';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { StoreContext } from '../../Context/StoreContext';
 
 const Navbar = ({ setShowLogin }) => {
-  const { token, setToken, getTotalCartAmount } = useContext(StoreContext);
   const [menu, setMenu] = useState("home");
-<<<<<<< Updated upstream
   const navigate = useNavigate();
+
+  // Effect to set active menu based on current URL path on component mount
+  useEffect(() => {
+    const path = location.pathname;
+    switch (path) {
+      case '/':
+        setMenu("home");
+        break;
+      case '/exploremenu':
+        setMenu("menu");
+        break;
+      case '#app-download':
+        setMenu("mob-app");
+        break;
+      case '#footer':
+        setMenu("contact");
+        break;
+      default:
+        setMenu("home");
+        break;
+    }
+  }, [location.pathname]);
 
   const logout = () => {
     localStorage.removeItem("token");
@@ -51,10 +72,10 @@ const Navbar = ({ setShowLogin }) => {
 <<<<<<< Updated upstream
       <Link to='/'><img className='logo' src={assets.logo} alt="" /></Link>
       <ul className="navbar-menu">
-        <li onClick={() => setMenu("home")} className={`${menu === "home" ? "active" : ""}`}>Home</li>
-        <li onClick={() => setMenu("menu")} className={`${menu === "menu" ? "active" : ""}`}>Menu</li>
-        <li onClick={() => setMenu("about-us")} className={`${menu === "about-us" ? "active" : ""}`}>About Us</li>
-        <li onClick={() => setMenu("contact-us")} className={`${menu === "contact-us" ? "active" : ""}`}>Contact Us</li>
+        <Link to="/" onClick={() => setMenu("home")} className={`${menu === "home" ? "active" : ""}`}>Home</Link>
+        <Link to="/exploremenu" onClick={() => setMenu("menu")} className={`${menu === "menu" ? "active" : ""}`}>Menu</Link>
+        <a href='#app-download' onClick={() => setMenu("mob-app")} className={`${menu === "mob-app" ? "active" : ""}`}>Mobile App</a>
+        <a href='#footer' onClick={() => setMenu("contact")} className={`${menu === "contact" ? "active" : ""}`}>Contact Us</a>
       </ul>
 =======
       <Link to='/'><img className='logo' src={assets.logo} alt="Food Dash Logo" /></Link>
@@ -96,6 +117,10 @@ const Navbar = ({ setShowLogin }) => {
       </div>
     </div>
   );
+};
+
+Navbar.propTypes = {
+  setShowLogin: PropTypes.func.isRequired,
 };
 
 export default Navbar;
