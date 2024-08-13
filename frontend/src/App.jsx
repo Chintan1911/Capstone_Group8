@@ -9,7 +9,8 @@ import ExploreMenu from './components/ExploreMenu/ExploreMenu';
 
 
 const App = () => {
-  const [showLogin,setShowLogin] = useState(false)
+  const [showLogin, setShowLogin] = useState(false);
+
   return (
     <>
          {showLogin?<LoginPopup setShowLogin={setShowLogin}/>:<></>}
@@ -22,8 +23,7 @@ const App = () => {
     </div>
     <Footer/>
     </>
-    
-  )
-}
+  );
+};
 
-export default App
+export default App;

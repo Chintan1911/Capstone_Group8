@@ -1,6 +1,5 @@
-import React from 'react';
-import './ExploreMenu.css';
-import { food_list } from '../../assets/assets'; // Import food_list from assets
+import React from 'react'
+import './ExploreMenu.css'
 
 const ExploreMenu = () => {
   return (
@@ -74,4 +73,4 @@ ExploreMenu.propTypes = {
   // If needed, define propTypes for context or other props
 };
 
-export default ExploreMenu;
+export default ExploreMenu
